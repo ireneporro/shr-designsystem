@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimplifyHR design system v1.0</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.34.0/tabler-icons.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --accent: #B27CF5;
+  --accent-hover: #9F63EF;
+  --accent-active: #8549D8;
+  --accent-100: #F0E4FF;
+  --accent-50: #F8F2FF;
+
+  --neutral-950: #0B1020;
+  --neutral-900: #111827;
+  --neutral-800: #1F2937;
+  --neutral-700: #374151;
+  --neutral-600: #4B5563;
+  --neutral-500: #6B7280;
+  --neutral-400: #9CA3AF;
+  --neutral-300: #D1D5DB;
+  --neutral-200: #E5E7EB;
+  --neutral-100: #F3F4F6;
+  --neutral-50: #F9FAFB;
+  --white: #FFFFFF;
+  --black: #000000;
+
+  --text-primary: var(--neutral-900);
+  --text-secondary: var(--neutral-700);
+  --text-muted: var(--neutral-500);
+  --text-disabled: var(--neutral-400);
+  --text-inverse: var(--white);
+
+  --surface-page: #F7F5FA;
+  --surface-card: var(--white);
+  --surface-raised: var(--white);
+  --surface-subtle: var(--neutral-50);
+  --surface-muted: var(--neutral-100);
+
+  --border-subtle: var(--neutral-200);
+  --border-default: var(--neutral-300);
+  --border-strong: var(--neutral-400);
+  --border-accent: var(--accent);
+
+  --action-primary-bg: var(--accent);
+  --action-primary-hover: var(--accent-hover);
+  --action-primary-active: var(--accent-active);
+  --action-primary-fg: var(--white);
+  --action-secondary-bg: var(--surface-card);
+  --action-secondary-fg: var(--text-primary);
+  --action-secondary-border: var(--border-default);
+  --action-subtle-bg: var(--surface-muted);
+  --action-subtle-fg: var(--text-secondary);
+
+  --status-published-bg: #DCFCE7;
+  --status-published-fg: #15803D;
+  --status-published-dot: #22C55E;
+  --status-notified-bg: #E0F2FE;
+  --status-notified-fg: #0369A1;
+  --status-notified-dot: #0EA5E9;
+  --status-pending-bg: #FEF3C7;
+  --status-pending-fg: #92400E;
+  --status-pending-dot: #F59E0B;
+  --status-draft-bg: var(--neutral-200);
+  --status-draft-fg: var(--neutral-700);
+  --status-draft-dot: var(--neutral-500);
+  --status-signature-bg: var(--accent-100);
+  --status-signature-fg: var(--accent-active);
+  --status-signature-dot: var(--accent);
+  --status-error-bg: #FEE2E2;
+  --status-error-fg: #991B1B;
+  --status-error-dot: #EF4444;
+
+  --role-hr-bg: var(--accent-100);
+  --role-hr-fg: var(--accent-active);
+  --role-client-bg: #EDE9FE;
+  --role-client-fg: #6D28D9;
+  --role-site-bg: #E0F2FE;
+  --role-site-fg: #075985;
+  --role-employee-bg: #FEF3C7;
+  --role-employee-fg: #92400E;
+
+  --viz-accent: var(--accent);
+  --viz-accent-soft: var(--accent-100);
+  --viz-blue: #4976F4;
+  --viz-blue-soft: #EDF1FE;
+  --viz-neutral: var(--neutral-600);
+  --viz-track: var(--neutral-200);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --fs-h1: 1.75rem;
+  --fs-h2: 1.375rem;
+  --fs-h3: 1.125rem;
+  --fs-subtitle: 1rem;
+  --fs-body: 0.875rem;
+  --fs-caption: 0.75rem;
+  --fs-micro: 0.6875rem;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.2;
+  --lh-normal: 1.5;
+  --lh-loose: 1.7;
+  --ls-tight: -0.05em;
+  --ls-normal: -0.0125em;
+  --ls-wide: 0.05em;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-card-padding: var(--space-4);
+  --space-card-padding-lg: var(--space-6);
+  --space-section: var(--space-8);
+  --space-page-padding: var(--space-6);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --border-thin: 1px;
+  --border-thick: 2px;
+
+  --shadow-regular: 0 1px 8px rgba(17, 24, 39, 0.04);
+  --shadow-mid: 0 2px 8px rgba(17, 24, 39, 0.08);
+  --shadow-strong: 0 0 1px rgba(17, 24, 39, 0.24), 0 4px 8px rgba(17, 24, 39, 0.12);
+  --shadow-elevated: 0 8px 24px rgba(17, 24, 39, 0.14);
+  --shadow-modal: 0 16px 48px rgba(17, 24, 39, 0.18);
+
+  --motion-fast: 150ms;
+  --motion-base: 250ms;
+  --motion-slow: 400ms;
+  --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --focus-ring: 0 0 0 3px var(--accent-100);
+  --focus-border: var(--accent);
+  --touch-min: 44px;
+  --input-height-md: 2.75rem;
+  --btn-height-sm: 2rem;
+  --btn-height-md: 2.5rem;
+  --btn-height-lg: 3rem;
+}
+
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: auto; }
+body { margin: 0; font-family: var(--font-sans); font-size: var(--fs-body); line-height: var(--lh-normal); letter-spacing: var(--ls-normal); color: var(--text-primary); background: var(--surface-page); -webkit-font-smoothing: antialiased; }
+button, input, select, textarea { font: inherit; }
+a { color: var(--accent-active); }
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.skip-link { position: fixed; left: var(--space-4); top: var(--space-4); transform: translateY(-140%); z-index: 4000; background: var(--text-primary); color: var(--white); padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); text-decoration: none; }
+.skip-link:focus { transform: translateY(0); }
+.layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); min-height: 100vh; }
+.sidebar { position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--surface-card); border-right: 1px solid var(--border-subtle); padding: var(--space-5); }
+.brand-lockup { display: flex; flex-direction: column; gap: var(--space-1); margin-bottom: var(--space-5); }
+.brand-lockup strong { font-size: var(--fs-subtitle); color: var(--text-primary); letter-spacing: var(--ls-tight); }
+.brand-lockup span { font-size: var(--fs-caption); color: var(--text-muted); }
+.nav-search, .mobile-nav { min-height: var(--touch-min); width: 100%; border: 1px solid var(--border-default); border-radius: var(--radius-sm); background: var(--surface-card); padding: 0 var(--space-3); color: var(--text-primary); }
+.nav-list { list-style: none; padding: 0; margin: var(--space-5) 0 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.nav-list a { display: flex; align-items: center; min-height: 36px; padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); color: var(--text-secondary); text-decoration: none; font-size: var(--fs-caption); font-weight: var(--fw-medium); }
+.nav-list a:hover { background: var(--surface-muted); color: var(--text-primary); }
+.nav-list a.active { background: var(--accent-100); color: var(--accent-active); box-shadow: inset 3px 0 0 var(--accent); }
+.mobile-bar { display: none; position: sticky; top: 0; z-index: 100; background: var(--surface-card); border-bottom: 1px solid var(--border-subtle); padding: var(--space-3) var(--space-4); }
+main { width: min(1220px, 100%); padding: var(--space-8) var(--space-6); }
+.section { scroll-margin-top: var(--space-6); background: var(--surface-card); box-shadow: var(--shadow-strong); border-radius: var(--radius-lg); padding: var(--space-card-padding-lg); margin-bottom: var(--space-section); }
+.cover { min-height: 420px; display: flex; flex-direction: column; justify-content: center; gap: var(--space-4); }
+h1, h2, h3, h4 { margin-top: 0; color: var(--text-primary); letter-spacing: var(--ls-tight); }
+h1 { font-size: 3rem; line-height: var(--lh-tight); margin-bottom: 0; }
+h2 { font-size: var(--fs-h2); margin-bottom: var(--space-5); }
+h3 { font-size: var(--fs-h3); margin-bottom: var(--space-2); }
+h4 { font-size: var(--fs-subtitle); margin-bottom: var(--space-2); }
+p { margin-top: 0; }
+.caption { color: var(--text-muted); font-size: var(--fs-caption); }
+.mono { font-family: var(--font-mono); }
+.badge, .status-pill, .role-chip { display: inline-flex; align-items: center; gap: var(--space-2); border-radius: var(--radius-pill); min-height: 24px; padding: var(--space-1) var(--space-3); font-size: var(--fs-caption); font-weight: var(--fw-semibold); }
+.version { width: fit-content; background: var(--accent-100); color: var(--accent-active); }
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3); margin: 0 0 var(--space-5); }
+.rule, .example, .recipe-card { border: 1px solid var(--border-subtle); background: var(--surface-subtle); border-radius: var(--radius-md); padding: var(--space-4); }
+.rule strong { display: block; margin-bottom: var(--space-1); color: var(--text-primary); font-size: var(--fs-caption); }
+.rule p { margin: 0; color: var(--text-secondary); font-size: var(--fs-caption); }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+.stack { display: flex; flex-direction: column; gap: var(--space-4); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.swatch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--space-3); }
+.token-group { border-top: 1px solid var(--border-subtle); padding-top: var(--space-5); margin-top: var(--space-5); }
+.token-group:first-of-type { border-top: 0; margin-top: 0; }
+.group-head { display: flex; justify-content: space-between; gap: var(--space-4); align-items: baseline; margin-bottom: var(--space-3); }
+.group-head p { color: var(--text-muted); font-size: var(--fs-caption); max-width: 560px; margin: 0; }
+.swatch { text-align: left; border: 1px solid var(--border-subtle); background: var(--surface-card); border-radius: var(--radius-sm); padding: var(--space-2); min-height: var(--touch-min); cursor: pointer; }
+.swatch-color { display: block; height: 52px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); margin-bottom: var(--space-2); }
+.swatch-name { display: block; color: var(--text-primary); font-family: var(--font-mono); font-size: var(--fs-caption); }
+.swatch-value { display: block; color: var(--text-muted); font-size: var(--fs-caption); overflow-wrap: anywhere; }
+.type-sample { display: grid; grid-template-columns: 150px 1fr 1fr; gap: var(--space-4); align-items: baseline; padding: var(--space-3) 0; border-bottom: 1px solid var(--border-subtle); }
+.type-token { color: var(--text-muted); font-family: var(--font-mono); font-size: var(--fs-caption); }
+.ruler { display: grid; grid-template-columns: 130px 1fr 90px; gap: var(--space-3); align-items: center; margin-bottom: var(--space-2); }
+.ruler-bar { height: 24px; min-width: 2px; border-radius: var(--radius-sm); background: var(--accent); }
+.radius-box { width: 84px; height: 84px; background: var(--accent-100); border: 1px solid var(--accent); }
+.shadow-card { background: var(--surface-card); border-radius: var(--radius-md); padding: var(--space-5); min-height: 96px; border: 1px solid var(--border-subtle); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-width: var(--touch-min); border: 1px solid transparent; border-radius: var(--radius-sm); font-weight: var(--fw-semibold); min-height: var(--touch-min); cursor: pointer; text-decoration: none; transition: background var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) var(--motion-ease); }
+.btn-sm { height: var(--btn-height-sm); min-height: var(--btn-height-sm); padding: 0 var(--space-3); font-size: var(--fs-caption); }
+.btn-md { height: var(--btn-height-md); padding: 0 var(--space-4); font-size: var(--fs-body); }
+.btn-lg { height: var(--btn-height-lg); padding: 0 var(--space-5); font-size: var(--fs-subtitle); }
+.btn-primary { background: var(--action-primary-bg); color: var(--action-primary-fg); }
+.btn-primary:hover { background: var(--action-primary-hover); }
+.btn-secondary { background: var(--action-secondary-bg); color: var(--action-secondary-fg); border-color: var(--action-secondary-border); }
+.btn-secondary:hover, .btn-ghost:hover { background: var(--surface-muted); }
+.btn-ghost, .btn-link { background: transparent; color: var(--text-secondary); }
+.btn-link { color: var(--accent-active); min-width: auto; padding-inline: 0; }
+.btn-danger { background: var(--status-error-dot); color: var(--white); }
+.btn-icon { aspect-ratio: 1; padding: 0; background: var(--surface-card); color: var(--text-secondary); border-color: var(--border-default); }
+.btn-icon.btn-md { width: var(--btn-height-md); }
+.field { display: grid; gap: var(--space-2); min-width: 220px; }
+.field label { color: var(--text-primary); font-weight: var(--fw-semibold); font-size: var(--fs-caption); }
+.input, .select, textarea.input { min-height: var(--input-height-md); border: 1px solid var(--border-default); border-radius: var(--radius-sm); background: var(--surface-card); color: var(--text-primary); padding: 0 var(--space-3); width: 100%; }
+.input:focus, .input.focused, .select.focused { border-color: var(--focus-border); box-shadow: var(--focus-ring); }
+.input[disabled], .select[disabled] { background: var(--surface-muted); color: var(--text-disabled); cursor: not-allowed; }
+.input.error { border-color: var(--status-error-dot); }
+.helper { color: var(--text-muted); font-size: var(--fs-caption); }
+.helper.error { color: var(--status-error-fg); }
+.card { background: var(--surface-card); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); box-shadow: var(--shadow-regular); padding: var(--space-card-padding); }
+.card.elevated { box-shadow: var(--shadow-strong); }
+.dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.status-published { background: var(--status-published-bg); color: var(--status-published-fg); } .status-published .dot { background: var(--status-published-dot); }
+.status-notified { background: var(--status-notified-bg); color: var(--status-notified-fg); } .status-notified .dot { background: var(--status-notified-dot); }
+.status-pending { background: var(--status-pending-bg); color: var(--status-pending-fg); } .status-pending .dot { background: var(--status-pending-dot); }
+.status-draft { background: var(--status-draft-bg); color: var(--status-draft-fg); } .status-draft .dot { background: var(--status-draft-dot); }
+.status-signature { background: var(--status-signature-bg); color: var(--status-signature-fg); } .status-signature .dot { background: var(--status-signature-dot); }
+.status-error { background: var(--status-error-bg); color: var(--status-error-fg); } .status-error .dot { background: var(--status-error-dot); }
+.role-hr { background: var(--role-hr-bg); color: var(--role-hr-fg); }
+.role-client { background: var(--role-client-bg); color: var(--role-client-fg); }
+.role-site { background: var(--role-site-bg); color: var(--role-site-fg); }
+.role-employee { background: var(--role-employee-bg); color: var(--role-employee-fg); }
+.avatar { width: 40px; height: 40px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--surface-muted); color: var(--accent); font-weight: var(--fw-semibold); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; font-size: var(--fs-micro); font-weight: var(--fw-semibold); color: var(--text-muted); letter-spacing: var(--ls-wide); padding: var(--space-3); border-bottom: 1px solid var(--border-default); }
+td { padding: var(--space-3); border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); vertical-align: middle; }
+tbody tr:hover { background: var(--surface-subtle); }
+.num { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.app-preview { background: var(--surface-page); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; min-width: 0; }
+.app-topbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); background: var(--surface-card); border-bottom: 1px solid var(--border-subtle); padding: var(--space-4) var(--space-5); }
+.app-brand { color: #16345C; font-weight: var(--fw-semibold); font-size: var(--fs-subtitle); white-space: nowrap; }
+.app-nav { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; color: var(--text-secondary); min-width: 0; }
+.app-nav span { display: inline-flex; gap: var(--space-2); align-items: center; min-height: 42px; padding: 0 var(--space-1); border-bottom: 3px solid transparent; white-space: nowrap; }
+.app-nav .active { color: var(--accent); border-bottom-color: var(--accent); }
+.app-actions { display: flex; align-items: center; gap: var(--space-3); }
+.notif { position: relative; color: #16345C; }
+.notif b { position: absolute; top: -9px; right: -10px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: #EF4444; color: var(--white); font-size: 10px; }
+.app-body { padding: var(--space-5); }
+.screen-title { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); margin-bottom: var(--space-5); }
+.screen-title h3 { margin: 0; font-size: var(--fs-title); }
+.screen-title .search-field { max-width: 330px; min-width: 220px; }
+.client-hero { margin: var(--space-5); border-radius: var(--radius-lg); padding: var(--space-5); color: var(--white); background: linear-gradient(100deg, #4976F4 0%, var(--accent) 78%); display: flex; justify-content: space-between; gap: var(--space-4); }
+.client-hero h3 { color: var(--white); margin-top: 0; }
+.client-hero .btn { background: rgba(255,255,255,.92); color: var(--accent-active); }
+.client-dashboard { display: grid; grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.9fr); gap: var(--space-4); padding: 0 var(--space-5) var(--space-5); }
+.client-main { display: grid; gap: var(--space-4); }
+.scroll-panel { max-height: 380px; overflow: auto; }
+.announcement-item { padding: var(--space-4); border-top: 1px solid var(--border-subtle); }
+.announcement-item h4 { margin-bottom: var(--space-2); }
+.metric-row { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+.metric-row > div { padding: var(--space-5); border-left: 1px solid var(--border-subtle); }
+.metric-row > div:first-child { border-left: 0; }
+.approval-row { display: grid; grid-template-columns: 44px 1fr auto; gap: var(--space-3); align-items: center; padding: var(--space-3) var(--space-4); border-top: 1px solid var(--border-subtle); }
+.approval-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; justify-content: flex-end; }
+.task-card { display: grid; grid-template-columns: 1fr auto; gap: var(--space-4); align-items: center; border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: var(--space-5); background: var(--surface-card); }
+.task-actions { display: grid; gap: var(--space-3); min-width: 140px; }
+.doc-workspace { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--space-5); background: #52575A; border-radius: var(--radius-lg); padding: var(--space-5); }
+.doc-workspace.compact { grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); gap: var(--space-4); padding: var(--space-4); }
+.doc-viewer { background: var(--surface-card); border-radius: var(--radius-md); overflow: hidden; min-height: 520px; display: grid; grid-template-rows: auto 1fr auto; }
+.doc-workspace.compact .doc-viewer, .doc-workspace.compact .doc-actions { min-height: 360px; }
+.doc-toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3); border-bottom: 1px solid var(--border-default); color: var(--text-muted); }
+.doc-page { margin: var(--space-6) auto; width: min(680px, calc(100% - var(--space-8))); min-height: 380px; color: var(--text-primary); font-size: var(--fs-caption); line-height: 1.65; }
+.doc-workspace.compact .doc-page { min-height: 230px; width: min(460px, calc(100% - var(--space-6))); margin: var(--space-4) auto; }
+.doc-page p { margin: 0 0 var(--space-3); }
+.signature-line { display: grid; grid-template-columns: 1fr auto; gap: var(--space-4); align-items: end; border-bottom: 1px solid var(--border-strong); padding-top: var(--space-4); }
+.sig-field { display: inline-flex; background: #B7D91D; color: var(--text-primary); padding: 2px var(--space-2); }
+.doc-footer { display: flex; gap: var(--space-3); align-items: center; padding: var(--space-3); border-top: 1px solid var(--border-subtle); background: var(--surface-card); }
+.doc-actions { background: var(--surface-card); border-radius: var(--radius-md); overflow: hidden; min-height: 520px; }
+.doc-action-primary { display: block; margin: var(--space-5); width: calc(100% - (var(--space-5) * 2)); background: var(--text-secondary); color: var(--white); border: 0; border-radius: var(--radius-pill); min-height: 40px; }
+.doc-action-primary:hover { background: var(--text-primary); }
+.action-list { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); padding: var(--space-4) 0; }
+.action-list div, .file-meta div { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-5); color: var(--text-primary); }
+.file-meta { padding: var(--space-4) 0; color: var(--text-muted); }
+.timeline { position: relative; padding-left: var(--space-6); }
+.timeline::before { content: ""; position: absolute; left: 8px; top: 4px; bottom: 4px; width: 1px; background: var(--border-default); }
+.timeline-item { position: relative; padding-bottom: var(--space-4); }
+.timeline-item::before { content: ""; position: absolute; left: calc(-1 * var(--space-6)); top: 3px; width: 17px; height: 17px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-100); }
+.modal-stage, .drawer-stage { min-height: 300px; border-radius: var(--radius-md); background: rgba(17,24,39,.26); padding: var(--space-5); display: grid; place-items: center; }
+.modal { background: var(--surface-card); width: min(620px, 100%); border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-modal); }
+.drawer { margin-left: auto; width: min(420px, 100%); height: 100%; min-height: 300px; background: var(--surface-card); border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-modal); }
+.signature-drawer { width: min(760px, 100%); padding: 0; display: grid; grid-template-rows: auto 1fr auto; }
+.drawer-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--border-subtle); }
+.drawer-content { padding: var(--space-5); display: grid; gap: var(--space-4); }
+.signer-chip { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 36px; padding: 0 var(--space-3); border-radius: var(--radius-pill); background: var(--surface-muted); color: var(--text-secondary); border: 1px solid var(--border-default); }
+.signer-chip.active { background: var(--accent-50); color: var(--accent-active); border-color: var(--accent); }
+.chip-count { display: inline-grid; place-items: center; min-width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--white); font-weight: var(--fw-semibold); }
+.toggle-row { display: flex; align-items: center; gap: var(--space-3); }
+.toggle { width: 46px; height: 24px; border-radius: var(--radius-pill); background: var(--accent); padding: 3px; display: inline-flex; justify-content: flex-end; }
+.toggle::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: var(--white); }
+.audience-methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+.method-card { border: 1px solid var(--border-default); border-radius: var(--radius-sm); padding: var(--space-3); background: var(--surface-card); }
+.method-card.active { background: var(--accent-50); border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.segment-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.segment-pill { min-height: 34px; display: inline-flex; align-items: center; gap: var(--space-2); border: 1px solid var(--border-default); border-radius: var(--radius-pill); padding: 0 var(--space-3); color: var(--text-muted); background: var(--surface-card); }
+.segment-pill.active { color: var(--accent); border-color: var(--accent); background: var(--accent-50); }
+.signature-selection { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden; }
+.selection-column { min-height: 220px; border-left: 1px solid var(--border-subtle); background: var(--surface-card); }
+.selection-column:first-child { border-left: 0; }
+.selection-column h5 { margin: 0; padding: var(--space-3); border-bottom: 1px solid var(--border-subtle); }
+.select-row { min-height: 34px; display: flex; align-items: center; gap: var(--space-2); padding: 0 var(--space-3); color: var(--text-secondary); }
+.select-row.active { background: var(--surface-muted); color: var(--text-primary); font-weight: var(--fw-semibold); }
+.fake-check { width: 18px; height: 18px; border: 1px solid var(--border-strong); border-radius: var(--radius-xs); display: inline-grid; place-items: center; color: var(--white); flex: 0 0 auto; }
+.fake-check.checked { background: var(--accent); border-color: var(--accent); }
+.message-box { width: 100%; min-height: 76px; border: 1px solid var(--border-default); border-radius: var(--radius-sm); padding: var(--space-3); color: var(--text-muted); }
+.drawer-footer { display: flex; justify-content: flex-end; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-top: 1px solid var(--border-subtle); }
+.audience-tree { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-3); }
+.tree-column { background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-3); }
+.tree-item { min-height: 40px; display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); padding: 0 var(--space-3); border-radius: var(--radius-sm); color: var(--text-secondary); border: 1px solid transparent; }
+.tree-item.active { background: var(--surface-muted); border-color: var(--border-default); color: var(--text-primary); box-shadow: inset 3px 0 0 var(--accent); }
+.tree-item.disabled { opacity: .45; }
+.company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4); }
+.company-card { background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-5); min-height: 130px; display: grid; gap: var(--space-3); }
+.company-card strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hierarchy { background: var(--surface-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4); }
+.node { position: relative; display: grid; gap: 2px; background: var(--surface-card); color: var(--text-primary); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: var(--space-3); margin: var(--space-2) 0; box-shadow: var(--shadow-regular); }
+.node::before { content: ""; position: absolute; left: -14px; top: 50%; width: 10px; height: 1px; background: var(--border-default); }
+.node.root::before { display: none; }
+.node.selected { background: var(--surface-card); border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent), var(--shadow-regular); }
+.node-label { color: var(--text-muted); font-size: var(--fs-micro); letter-spacing: var(--ls-wide); font-weight: var(--fw-semibold); }
+.node-title { color: var(--text-primary); font-weight: var(--fw-semibold); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.node-meta { color: var(--text-muted); font-size: var(--fs-caption); }
+.copy-toast { position: fixed; right: var(--space-5); bottom: var(--space-5); z-index: 3000; transform: translateY(120px); transition: transform var(--motion-base) var(--motion-ease); background: var(--text-primary); color: var(--white); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); box-shadow: var(--shadow-elevated); }
+.copy-toast.show { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+@media (max-width: 1100px) { .client-dashboard, .doc-workspace { grid-template-columns: 1fr; } .doc-actions { min-height: auto; } }
+@media (max-width: 1000px) { .company-grid, .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .audience-tree { grid-template-columns: 1fr; } .app-topbar { align-items: flex-start; flex-direction: column; } .app-actions { align-self: flex-end; } }
+@media (max-width: 900px) { .layout { display: block; } .sidebar { display: none; } .mobile-bar { display: block; } main { padding: var(--space-4); } h1 { font-size: 2.25rem; } .grid-2, .grid-3, .grid-4, .type-sample { grid-template-columns: 1fr; } .group-head, .screen-title { display: block; } .screen-title .search-field { margin-top: var(--space-3); max-width: none; } .company-grid { grid-template-columns: 1fr; } .metric-row, .approval-row, .task-card, .audience-methods, .signature-selection { grid-template-columns: 1fr; text-align: left; } .metric-row > div { border-left: 0; border-top: 1px solid var(--border-subtle); } .metric-row > div:first-child { border-top: 0; } .selection-column { border-left: 0; border-top: 1px solid var(--border-subtle); } .selection-column:first-child { border-top: 0; } .approval-actions, .task-actions { justify-content: flex-start; } .doc-workspace { padding: var(--space-3); } .doc-toolbar, .client-hero, .doc-footer, .drawer-footer { align-items: flex-start; flex-direction: column; } .doc-page { width: calc(100% - var(--space-4)); margin: var(--space-4) auto; } .signature-line { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="mobile-bar"><select class="mobile-nav" aria-label="Jump to section"><option value="#cover">Cover</option><option value="#shr-philosophy">SHR philosophy</option><option value="#tokens">Tokens</option><option value="#roles-permissions">Roles and permissions</option><option value="#foundations">Foundations</option><option value="#shared-primitives">Shared primitives</option><option value="#shr-components">SHR components</option><option value="#role-layouts">Role-based layouts</option><option value="#selection-trees">Selection decision trees</option><option value="#esign-patterns">eSign patterns</option><option value="#applied-recipes">Applied recipes</option><option value="#governance">Governance</option><option value="#footer">Footer</option></select></div>
+<div class="layout">
+<aside class="sidebar" aria-label="SHR design system navigation">
+  <div class="brand-lockup"><strong>SimplifyHR DS</strong><span>Living reference v1.0</span></div>
+  <input class="nav-search" type="search" placeholder="Search sections" aria-label="Search sections">
+  <nav><ul class="nav-list"><li><a href="#cover">Cover</a></li><li><a href="#shr-philosophy">SHR philosophy</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#roles-permissions">Roles and permissions</a></li><li><a href="#foundations">Foundations</a></li><li><a href="#shared-primitives">Shared primitives</a></li><li><a href="#shr-components">SHR components</a></li><li><a href="#role-layouts">Role-based layouts</a></li><li><a href="#selection-trees">Selection decision trees</a></li><li><a href="#esign-patterns">eSign patterns</a></li><li><a href="#applied-recipes">Applied recipes</a></li><li><a href="#governance">Governance</a></li><li><a href="#footer">Footer</a></li></ul></nav>
+</aside>
+<main id="main">
+
+<section id="cover" class="section cover" data-title="Cover">
+  <span class="badge version">v1.0</span>
+  <h1>SimplifyHR design system</h1>
+  <p class="caption" style="font-size:var(--fs-subtitle);max-width:720px">A neutral-first, role-aware design system reference for HR operations, permissions, eSign workflows, and client-company management.</p>
+  <div class="rules">
+    <div class="rule"><strong>Base shared with Staffology</strong><p>Inter, type scale, spacing, radius, shadows, density, and accessibility rules are shared.</p></div>
+    <div class="rule"><strong>SHR identity</strong><p>The product uses a restrained purple accent and neutral surfaces. Color appears only when it carries meaning.</p></div>
+    <div class="rule"><strong>Role-aware by default</strong><p>Every surface must consider HR Partner, Client, Site, Department, and Employee access.</p></div>
+  </div>
+  <p class="caption">Last updated: May 31, 2026</p>
+</section>
+
+<section id="shr-philosophy" class="section" data-title="SHR philosophy">
+  <h2>SHR philosophy</h2>
+  <div class="rules">
+    <div class="rule"><strong>Neutral first</strong><p>Most UI stays white, grey, and text-led. Purple is an accent, not a wash.</p></div>
+    <div class="rule"><strong>Permission clarity</strong><p>Users should understand what they can see, edit, approve, or sign without learning internal access logic.</p></div>
+    <div class="rule"><strong>Operational calm</strong><p>Tables, cards, and forms should feel dense enough for HR operations but calm enough for repeated daily use.</p></div>
+    <div class="rule"><strong>Hierarchy over decoration</strong><p>Use typography, spacing, borders, and state before adding color.</p></div>
+    <div class="rule"><strong>Workflow memory</strong><p>Activities, announcements, and signatures need clear history, ownership, and next action.</p></div>
+  </div>
+</section>
+
+<section id="tokens" class="section" data-title="Tokens">
+  <h2>Tokens</h2>
+  <p class="caption">SHR uses the same base primitives as Staffology, with a semantic layer for product roles and surfaces.</p>
+  <div class="token-group"><div class="group-head"><h3>Accent</h3><p>Used sparingly for active nav, primary action, focus, and selected structural highlights.</p></div><div class="swatch-grid"><button class="swatch" data-copy="--accent" type="button"><span class="swatch-color" style="background: var(--accent)"></span><span class="swatch-name">--accent</span><span class="swatch-value">--accent</span></button><button class="swatch" data-copy="--accent-hover" type="button"><span class="swatch-color" style="background: var(--accent-hover)"></span><span class="swatch-name">--accent-hover</span><span class="swatch-value">--accent-hover</span></button><button class="swatch" data-copy="--accent-active" type="button"><span class="swatch-color" style="background: var(--accent-active)"></span><span class="swatch-name">--accent-active</span><span class="swatch-value">--accent-active</span></button><button class="swatch" data-copy="--accent-100" type="button"><span class="swatch-color" style="background: var(--accent-100)"></span><span class="swatch-name">--accent-100</span><span class="swatch-value">--accent-100</span></button><button class="swatch" data-copy="--accent-50" type="button"><span class="swatch-color" style="background: var(--accent-50)"></span><span class="swatch-name">--accent-50</span><span class="swatch-value">--accent-50</span></button></div></div><div class="token-group"><div class="group-head"><h3>Text</h3><p>Neutral-first text system. Use strong text for structure and muted text for metadata.</p></div><div class="swatch-grid"><button class="swatch" data-copy="--text-primary" type="button"><span class="swatch-color" style="background: var(--text-primary)"></span><span class="swatch-name">--text-primary</span><span class="swatch-value">--text-primary</span></button><button class="swatch" data-copy="--text-secondary" type="button"><span class="swatch-color" style="background: var(--text-secondary)"></span><span class="swatch-name">--text-secondary</span><span class="swatch-value">--text-secondary</span></button><button class="swatch" data-copy="--text-muted" type="button"><span class="swatch-color" style="background: var(--text-muted)"></span><span class="swatch-name">--text-muted</span><span class="swatch-value">--text-muted</span></button><button class="swatch" data-copy="--text-disabled" type="button"><span class="swatch-color" style="background: var(--text-disabled)"></span><span class="swatch-name">--text-disabled</span><span class="swatch-value">--text-disabled</span></button><button class="swatch" data-copy="--text-inverse" type="button"><span class="swatch-color" style="background: var(--text-inverse)"></span><span class="swatch-name">--text-inverse</span><span class="swatch-value">--text-inverse</span></button></div></div><div class="token-group"><div class="group-head"><h3>Surfaces</h3><p>Page, cards, raised surfaces, and subtle section backgrounds.</p></div><div class="swatch-grid"><button class="swatch" data-copy="--surface-page" type="button"><span class="swatch-color" style="background: var(--surface-page)"></span><span class="swatch-name">--surface-page</span><span class="swatch-value">--surface-page</span></button><button class="swatch" data-copy="--surface-card" type="button"><span class="swatch-color" style="background: var(--surface-card)"></span><span class="swatch-name">--surface-card</span><span class="swatch-value">--surface-card</span></button><button class="swatch" data-copy="--surface-raised" type="button"><span class="swatch-color" style="background: var(--surface-raised)"></span><span class="swatch-name">--surface-raised</span><span class="swatch-value">--surface-raised</span></button><button class="swatch" data-copy="--surface-subtle" type="button"><span class="swatch-color" style="background: var(--surface-subtle)"></span><span class="swatch-name">--surface-subtle</span><span class="swatch-value">--surface-subtle</span></button><button class="swatch" data-copy="--surface-muted" type="button"><span class="swatch-color" style="background: var(--surface-muted)"></span><span class="swatch-name">--surface-muted</span><span class="swatch-value">--surface-muted</span></button></div></div><div class="token-group"><div class="group-head"><h3>Borders</h3><p>Subtle lines define density and hierarchy without adding color noise.</p></div><div class="swatch-grid"><button class="swatch" data-copy="--border-subtle" type="button"><span class="swatch-color" style="background: var(--border-subtle)"></span><span class="swatch-name">--border-subtle</span><span class="swatch-value">--border-subtle</span></button><button class="swatch" data-copy="--border-default" type="button"><span class="swatch-color" style="background: var(--border-default)"></span><span class="swatch-name">--border-default</span><span class="swatch-value">--border-default</span></button><button class="swatch" data-copy="--border-strong" type="button"><span class="swatch-color" style="background: var(--border-strong)"></span><span class="swatch-name">--border-strong</span><span class="swatch-value">--border-strong</span></button><button class="swatch" data-copy="--border-accent" type="button"><span class="swatch-color" style="background: var(--border-accent)"></span><span class="swatch-name">--border-accent</span><span class="swatch-value">--border-accent</span></button></div></div><div class="token-group"><div class="group-head"><h3>Status</h3><p>Six product states with dots. Status color is semantic, never decorative.</p></div><div class="swatch-grid"><button class="swatch" data-copy="--status-published-bg" type="button"><span class="swatch-color" style="background: var(--status-published-bg)"></span><span class="swatch-name">--status-published-bg</span><span class="swatch-value">--status-published-bg</span></button><button class="swatch" data-copy="--status-published-fg" type="button"><span class="swatch-color" style="background: var(--status-published-fg)"></span><span class="swatch-name">--status-published-fg</span><span class="swatch-value">--status-published-fg</span></button><button class="swatch" data-copy="--status-notified-bg" type="button"><span class="swatch-color" style="background: var(--status-notified-bg)"></span><span class="swatch-name">--status-notified-bg</span><span class="swatch-value">--status-notified-bg</span></button><button class="swatch" data-copy="--status-notified-fg" type="button"><span class="swatch-color" style="background: var(--status-notified-fg)"></span><span class="swatch-name">--status-notified-fg</span><span class="swatch-value">--status-notified-fg</span></button><button class="swatch" data-copy="--status-pending-bg" type="button"><span class="swatch-color" style="background: var(--status-pending-bg)"></span><span class="swatch-name">--status-pending-bg</span><span class="swatch-value">--status-pending-bg</span></button><button class="swatch" data-copy="--status-pending-fg" type="button"><span class="swatch-color" style="background: var(--status-pending-fg)"></span><span class="swatch-name">--status-pending-fg</span><span class="swatch-value">--status-pending-fg</span></button><button class="swatch" data-copy="--status-draft-bg" type="button"><span class="swatch-color" style="background: var(--status-draft-bg)"></span><span class="swatch-name">--status-draft-bg</span><span class="swatch-value">--status-draft-bg</span></button><button class="swatch" data-copy="--status-draft-fg" type="button"><span class="swatch-color" style="background: var(--status-draft-fg)"></span><span class="swatch-name">--status-draft-fg</span><span class="swatch-value">--status-draft-fg</span></button><button class="swatch" data-copy="--status-signature-bg" type="button"><span class="swatch-color" style="background: var(--status-signature-bg)"></span><span class="swatch-name">--status-signature-bg</span><span class="swatch-value">--status-signature-bg</span></button><button class="swatch" data-copy="--status-signature-fg" type="button"><span class="swatch-color" style="background: var(--status-signature-fg)"></span><span class="swatch-name">--status-signature-fg</span><span class="swatch-value">--status-signature-fg</span></button><button class="swatch" data-copy="--status-error-bg" type="button"><span class="swatch-color" style="background: var(--status-error-bg)"></span><span class="swatch-name">--status-error-bg</span><span class="swatch-value">--status-error-bg</span></button><button class="swatch" data-copy="--status-error-fg" type="button"><span class="swatch-color" style="background: var(--status-error-fg)"></span><span class="swatch-name">--status-error-fg</span><span class="swatch-value">--status-error-fg</span></button></div></div><div class="token-group"><div class="group-head"><h3>Role and audience</h3><p>Role chips, entity initials, and scoped audience markers.</p></div><div class="swatch-grid"><button class="swatch" data-copy="--role-hr-bg" type="button"><span class="swatch-color" style="background: var(--role-hr-bg)"></span><span class="swatch-name">--role-hr-bg</span><span class="swatch-value">--role-hr-bg</span></button><button class="swatch" data-copy="--role-hr-fg" type="button"><span class="swatch-color" style="background: var(--role-hr-fg)"></span><span class="swatch-name">--role-hr-fg</span><span class="swatch-value">--role-hr-fg</span></button><button class="swatch" data-copy="--role-client-bg" type="button"><span class="swatch-color" style="background: var(--role-client-bg)"></span><span class="swatch-name">--role-client-bg</span><span class="swatch-value">--role-client-bg</span></button><button class="swatch" data-copy="--role-client-fg" type="button"><span class="swatch-color" style="background: var(--role-client-fg)"></span><span class="swatch-name">--role-client-fg</span><span class="swatch-value">--role-client-fg</span></button><button class="swatch" data-copy="--role-site-bg" type="button"><span class="swatch-color" style="background: var(--role-site-bg)"></span><span class="swatch-name">--role-site-bg</span><span class="swatch-value">--role-site-bg</span></button><button class="swatch" data-copy="--role-site-fg" type="button"><span class="swatch-color" style="background: var(--role-site-fg)"></span><span class="swatch-name">--role-site-fg</span><span class="swatch-value">--role-site-fg</span></button><button class="swatch" data-copy="--role-employee-bg" type="button"><span class="swatch-color" style="background: var(--role-employee-bg)"></span><span class="swatch-name">--role-employee-bg</span><span class="swatch-value">--role-employee-bg</span></button><button class="swatch" data-copy="--role-employee-fg" type="button"><span class="swatch-color" style="background: var(--role-employee-fg)"></span><span class="swatch-name">--role-employee-fg</span><span class="swatch-value">--role-employee-fg</span></button></div></div><div class="token-group"><div class="group-head"><h3>Data visualization</h3><p>Neutral-purple-blue scale for product metrics. Do not use status colors for chart series.</p></div><div class="swatch-grid"><button class="swatch" data-copy="--viz-accent" type="button"><span class="swatch-color" style="background: var(--viz-accent)"></span><span class="swatch-name">--viz-accent</span><span class="swatch-value">--viz-accent</span></button><button class="swatch" data-copy="--viz-accent-soft" type="button"><span class="swatch-color" style="background: var(--viz-accent-soft)"></span><span class="swatch-name">--viz-accent-soft</span><span class="swatch-value">--viz-accent-soft</span></button><button class="swatch" data-copy="--viz-blue" type="button"><span class="swatch-color" style="background: var(--viz-blue)"></span><span class="swatch-name">--viz-blue</span><span class="swatch-value">--viz-blue</span></button><button class="swatch" data-copy="--viz-blue-soft" type="button"><span class="swatch-color" style="background: var(--viz-blue-soft)"></span><span class="swatch-name">--viz-blue-soft</span><span class="swatch-value">--viz-blue-soft</span></button><button class="swatch" data-copy="--viz-neutral" type="button"><span class="swatch-color" style="background: var(--viz-neutral)"></span><span class="swatch-name">--viz-neutral</span><span class="swatch-value">--viz-neutral</span></button><button class="swatch" data-copy="--viz-track" type="button"><span class="swatch-color" style="background: var(--viz-track)"></span><span class="swatch-name">--viz-track</span><span class="swatch-value">--viz-track</span></button></div></div>
+  <div class="token-group">
+    <div class="group-head">
+      <h3>Actions</h3>
+      <p>Semantic action tokens keep buttons and repeated controls portable across SHR and future apps.</p>
+    </div>
+    <div class="swatch-grid">
+      <button class="swatch" data-copy="--action-primary-bg" type="button"><span class="swatch-color" style="background: var(--action-primary-bg)"></span><span class="swatch-name">--action-primary-bg</span><span class="swatch-value">primary action fill</span></button>
+      <button class="swatch" data-copy="--action-primary-hover" type="button"><span class="swatch-color" style="background: var(--action-primary-hover)"></span><span class="swatch-name">--action-primary-hover</span><span class="swatch-value">primary hover</span></button>
+      <button class="swatch" data-copy="--action-primary-active" type="button"><span class="swatch-color" style="background: var(--action-primary-active)"></span><span class="swatch-name">--action-primary-active</span><span class="swatch-value">primary active</span></button>
+      <button class="swatch" data-copy="--action-secondary-bg" type="button"><span class="swatch-color" style="background: var(--action-secondary-bg)"></span><span class="swatch-name">--action-secondary-bg</span><span class="swatch-value">secondary surface</span></button>
+      <button class="swatch" data-copy="--action-secondary-border" type="button"><span class="swatch-color" style="background: var(--action-secondary-border)"></span><span class="swatch-name">--action-secondary-border</span><span class="swatch-value">secondary border</span></button>
+      <button class="swatch" data-copy="--action-subtle-bg" type="button"><span class="swatch-color" style="background: var(--action-subtle-bg)"></span><span class="swatch-name">--action-subtle-bg</span><span class="swatch-value">subtle action bg</span></button>
+    </div>
+  </div>
+</section>
+
+<section id="roles-permissions" class="section" data-title="Roles and permissions">
+  <h2>Roles and permissions</h2>
+  <p class="caption">SHR is fundamentally role-aware. The design system needs to encode visibility, editability, approval, signature, and no-permission states.</p>
+  <div class="grid-4"><div class="card"><span class="role-chip role-hr">Platform operator</span><h3 style="margin-top:var(--space-3)">HR Admin</h3><p class="caption">Full platform access, company setup, users, payroll, invoices, reports, overrides.</p></div><div class="card"><span class="role-chip role-hr">Platform operator</span><h3 style="margin-top:var(--space-3)">HR Rep</h3><p class="caption">Assigned client operations, employees, assignments, timesheets, payroll and invoices.</p></div><div class="card"><span class="role-chip role-hr">Platform operator</span><h3 style="margin-top:var(--space-3)">Safety Coordinator</h3><p class="caption">Safety, compliance, site requirements, and documentation visibility.</p></div><div class="card"><span class="role-chip role-site">Delegated access</span><h3 style="margin-top:var(--space-3)">HR Proxy</h3><p class="caption">Temporary or delegated access. Cannot exceed the role being proxied.</p></div><div class="card"><span class="role-chip role-client">Company-level user</span><h3 style="margin-top:var(--space-3)">Client</h3><p class="caption">Company visibility, approvals, invoices, payroll summaries, and financial documents.</p></div><div class="card"><span class="role-chip role-employee">Client employee role</span><h3 style="margin-top:var(--space-3)">Site Manager</h3><p class="caption">Site-level employees, assignments, and timesheets.</p></div><div class="card"><span class="role-chip role-employee">Client employee role</span><h3 style="margin-top:var(--space-3)">Department Manager</h3><p class="caption">Department-level employees, assignments, and limited timesheet data.</p></div><div class="card"><span class="role-chip role-employee">Individual user</span><h3 style="margin-top:var(--space-3)">Employee</h3><p class="caption">Own profile, assignments, timesheets, and personal documents.</p></div></div>
+  <div class="table-wrap" style="margin-top:var(--space-5)"><table><thead><tr><th>Domain / feature</th><th>HR Admin</th><th>HR Rep</th><th>Safety</th><th>Proxy</th><th>Client</th><th>Site mgr</th><th>Dept mgr</th><th>Employee</th></tr></thead><tbody><tr><td>Create / edit companies</td><td class="mono">Full</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td></tr><tr><td>View company info</td><td class="mono">Full</td><td class="mono">Full</td><td class="mono">View</td><td class="mono">View</td><td class="mono">View</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td></tr><tr><td>View sites & regions</td><td class="mono">Full</td><td class="mono">Full</td><td class="mono">View</td><td class="mono">View</td><td class="mono">View</td><td class="mono">Site scope</td><td class="mono">Dept scope</td><td class="mono">No</td></tr><tr><td>View employees</td><td class="mono">Full</td><td class="mono">Full</td><td class="mono">View</td><td class="mono">View</td><td class="mono">View</td><td class="mono">Site scope</td><td class="mono">Dept scope</td><td class="mono">No</td></tr><tr><td>Edit employees</td><td class="mono">Full</td><td class="mono">Full</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td></tr><tr><td>Timesheets</td><td class="mono">Approve</td><td class="mono">Approve</td><td class="mono">Site view</td><td class="mono">View</td><td class="mono">View</td><td class="mono">Site view</td><td class="mono">Dept view</td><td class="mono">Own only</td></tr><tr><td>Payroll summaries</td><td class="mono">Full</td><td class="mono">Assigned</td><td class="mono">View</td><td class="mono">View</td><td class="mono">View</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td></tr><tr><td>Invoices</td><td class="mono">Full</td><td class="mono">Assigned</td><td class="mono">No</td><td class="mono">View</td><td class="mono">Approve</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td></tr><tr><td>Safety docs</td><td class="mono">Full</td><td class="mono">Full</td><td class="mono">View</td><td class="mono">View</td><td class="mono">View</td><td class="mono">Site scope</td><td class="mono">Dept scope</td><td class="mono">No</td></tr><tr><td>Send for signature</td><td class="mono">Full</td><td class="mono">Full</td><td class="mono">Full</td><td class="mono">Full</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td><td class="mono">No</td></tr><tr><td>Sign document</td><td class="mono">Yes</td><td class="mono">Yes</td><td class="mono">Yes</td><td class="mono">Yes</td><td class="mono">Yes</td><td class="mono">Yes</td><td class="mono">Yes</td><td class="mono">Yes</td></tr></tbody></table></div>
+</section>
+
+<section id="foundations" class="section" data-title="Foundations">
+  <h2>Foundations</h2>
+  <div class="rules">
+    <div class="rule"><strong>Typography</strong><p>Inter for product UI, JetBrains Mono for system identifiers, EINs, money, and aligned numbers. Headings use <span class="mono">--ls-tight</span> (-0.05em / -0.8px at 16px).</p></div>
+    <div class="rule"><strong>Spacing</strong><p>4px base scale. Use semantic spacing for cards, forms, sections, and page padding.</p></div>
+    <div class="rule"><strong>Radius</strong><p>8px controls, 12px mid surfaces, 16px cards/modals/drawers, pill for chips and status.</p></div>
+    <div class="rule"><strong>Motion</strong><p>Small state changes only. Respect reduced motion. No decorative animation.</p></div>
+  </div>
+  <div class="type-sample"><span class="type-token">--fs-h1</span><span style="font-size:var(--fs-h1);font-family:var(--font-sans)">Inter sample for SHR UI</span><span style="font-size:var(--fs-h1);font-family:var(--font-mono)">EIN 12-3456789</span></div><div class="type-sample"><span class="type-token">--fs-h2</span><span style="font-size:var(--fs-h2);font-family:var(--font-sans)">Inter sample for SHR UI</span><span style="font-size:var(--fs-h2);font-family:var(--font-mono)">EIN 12-3456789</span></div><div class="type-sample"><span class="type-token">--fs-h3</span><span style="font-size:var(--fs-h3);font-family:var(--font-sans)">Inter sample for SHR UI</span><span style="font-size:var(--fs-h3);font-family:var(--font-mono)">EIN 12-3456789</span></div><div class="type-sample"><span class="type-token">--fs-subtitle</span><span style="font-size:var(--fs-subtitle);font-family:var(--font-sans)">Inter sample for SHR UI</span><span style="font-size:var(--fs-subtitle);font-family:var(--font-mono)">EIN 12-3456789</span></div><div class="type-sample"><span class="type-token">--fs-body</span><span style="font-size:var(--fs-body);font-family:var(--font-sans)">Inter sample for SHR UI</span><span style="font-size:var(--fs-body);font-family:var(--font-mono)">EIN 12-3456789</span></div><div class="type-sample"><span class="type-token">--fs-caption</span><span style="font-size:var(--fs-caption);font-family:var(--font-sans)">Inter sample for SHR UI</span><span style="font-size:var(--fs-caption);font-family:var(--font-mono)">EIN 12-3456789</span></div><div class="type-sample"><span class="type-token">--fs-micro</span><span style="font-size:var(--fs-micro);font-family:var(--font-sans)">Inter sample for SHR UI</span><span style="font-size:var(--fs-micro);font-family:var(--font-mono)">EIN 12-3456789</span></div>
+  <div class="grid-3" style="margin-top:var(--space-5)"><div class="example"><div class="ruler"><span class="mono">--space-4</span><span class="ruler-bar" style="width:var(--space-4)"></span><span class="caption">16px</span></div><div class="ruler"><span class="mono">--space-6</span><span class="ruler-bar" style="width:var(--space-6)"></span><span class="caption">24px</span></div><div class="ruler"><span class="mono">--space-8</span><span class="ruler-bar" style="width:var(--space-8)"></span><span class="caption">32px</span></div></div><div class="example row"><div class="radius-box" style="border-radius:var(--radius-sm)"></div><div class="radius-box" style="border-radius:var(--radius-lg)"></div><div class="radius-box" style="border-radius:var(--radius-pill)"></div></div><div class="example"><div class="shadow-card" style="box-shadow:var(--shadow-regular)">Regular</div><div class="shadow-card" style="box-shadow:var(--shadow-elevated);margin-top:var(--space-4)">Elevated</div></div></div>
+</section>
+
+<section id="shared-primitives" class="section" data-title="Shared primitives">
+  <h2>Shared primitives</h2>
+  <div class="rules"><div class="rule"><strong>Adapted, not reinvented</strong><p>Buttons, inputs, select, badges, tables, modals, and drawers keep the shared DS structure but read through SHR tokens.</p></div><div class="rule"><strong>Purple is not everywhere</strong><p>Primary actions and active navigation use accent. Most repeated active controls remain neutral or text-led unless they signal state.</p></div></div>
+  <div class="stack">
+    <div class="example"><h3>Button</h3><div class="row"><button class="btn btn-primary btn-md"><i class="ti ti-plus"></i>Add company</button><button class="btn btn-secondary btn-md">Cancel</button><button class="btn btn-ghost btn-md">View all</button><button class="btn btn-danger btn-md"><i class="ti ti-trash"></i>Archive</button><button class="btn btn-link btn-md">Back to companies</button><button class="btn btn-icon btn-md" aria-label="Edit"><i class="ti ti-pencil"></i></button></div></div>
+    <div class="grid-3"><div class="field"><label>Company name</label><input class="input" value="0 Manual STG Company"></div><div class="field"><label>Industry</label><select class="select"><option>Restaurant</option></select></div><div class="field"><label>Disabled</label><input class="input" value="Read-only role" disabled></div></div>
+    <div class="grid-2"><div class="card"><h3>Card</h3><p class="caption">Neutral card for companies, tasks, and detail panels.</p></div><div class="card elevated"><h3>Elevated card</h3><p class="caption">Reserved for modal, drawer, popover, or important dashboard modules.</p></div></div>
+    <div class="example"><h3>Badge</h3><div class="row"><span class="badge role-hr">HR Representative</span><span class="badge role-client">Client</span><span class="badge role-site">Site Manager</span><span class="badge role-employee">Employee</span></div></div>
+    <div class="example table-wrap"><h3>Table</h3><table><thead><tr><th>Title</th><th>Company & site</th><th>People</th><th>Author</th><th>Time & date</th><th>Status</th></tr></thead><tbody><tr><td>"Upadte"</td><td><span class="badge">3. test company 1/1</span></td><td><span class="role-chip role-hr">HR Representative</span></td><td>HR string</td><td class="mono">11:03 PM 04/09/2026</td><td><span class="status-pill status-published"><span class="dot"></span>Published</span></td></tr><tr><td>test</td><td><span class="badge">Admin NB NB 2/2</span></td><td><span class="role-chip role-site">Site Manager</span></td><td>Hr Rep emails email</td><td class="mono">05:26 PM 03/16/2026</td><td><span class="status-pill status-notified"><span class="dot"></span>Published with notification</span></td></tr><tr><td>Preview testing announcement</td><td><span class="badge">TestShrManual 2/2</span></td><td><span class="role-chip role-employee">All employees</span></td><td>HR string</td><td class="mono">08:59 PM 02/19/2026</td><td><span class="status-pill status-draft"><span class="dot"></span>Draft</span></td></tr></tbody></table></div>
+    <div class="grid-2"><div class="example"><h3>Modal</h3><div class="modal-stage"><div class="modal"><div class="row" style="justify-content:space-between"><h4>Confirm archive</h4><button class="btn btn-icon btn-md" aria-label="Close"><i class="ti ti-x"></i></button></div><p class="caption">Modals are for blocking decisions and destructive confirmation.</p><div class="row" style="justify-content:flex-end"><button class="btn btn-secondary btn-md">Cancel</button><button class="btn btn-danger btn-md">Archive</button></div></div></div></div><div class="example"><h3>Drawer</h3><div class="drawer-stage"><div class="drawer signature-drawer"><div class="drawer-header"><h4>Send Signature Request</h4><button class="btn btn-icon btn-md" aria-label="Close"><i class="ti ti-x"></i></button></div><div class="drawer-content"><div><h4>Signing Order (from template)</h4><div class="row"><span class="signer-chip active"><i class="ti ti-grip-vertical"></i><span class="chip-count">1</span>Garcia, Gaby <i class="ti ti-x"></i></span><span class="signer-chip"><i class="ti ti-grip-vertical"></i><span class="chip-count">2</span>Employee's Manager <i class="ti ti-x"></i></span></div></div><div class="toggle-row"><span class="toggle" aria-hidden="true"></span><span>Sequential</span><i class="ti ti-info-circle" style="color:var(--accent)"></i></div><div class="audience-methods"><div class="method-card"><strong>Everyone</strong><p class="caption">96 employees</p></div><div class="method-card active"><strong>By Group</strong><p class="caption">Companies · Sites · Roles</p></div><div class="method-card"><strong>Specific People</strong><p class="caption">Search & select</p></div></div><div class="segment-row"><span class="segment-pill active">Companies <span class="chip-count">3</span></span><span class="segment-pill active">Sites <span class="chip-count">5</span></span><span class="segment-pill active">Department <span class="chip-count">6</span></span><span class="segment-pill">Roles <span>6</span></span><span class="segment-pill">Managers <span>3</span></span></div><div class="field"><input class="input" placeholder="Search companies"></div><div class="signature-selection"><div class="selection-column"><h5>All Companies (16)</h5><div class="select-row active">ACME Company (2/8)</div><div class="select-row">American Jerky (0/1)</div><div class="select-row">El Burro (0/2)</div><div class="select-row">TEG Restaurant (0/6)</div></div><div class="selection-column"><h5><span class="fake-check"></span> All Sites (8)</h5><div class="select-row"><span class="fake-check"></span>Region A (6)</div><div class="select-row"><span class="fake-check checked"><i class="ti ti-check"></i></span>Commerce, CA</div><div class="select-row"><span class="fake-check"></span>Downey, CA</div><div class="select-row"><span class="fake-check checked"><i class="ti ti-check"></i></span>San Bernardino, CA</div></div><div class="selection-column"><h5><span class="fake-check"></span> Department (6)</h5><div class="select-row"><span class="fake-check"></span>Commerce, CA</div><div class="select-row"><span class="fake-check"></span>Department 1</div><div class="select-row"><span class="fake-check checked"><i class="ti ti-check"></i></span>Department 2</div><div class="select-row"><span class="fake-check"></span>Department 3</div></div></div><div><h4>Message to Signers</h4><div class="message-box">Please sign the document...</div></div><p class="caption"><i class="ti ti-folder-filled"></i> When completed, the signed document will be saved to the "Signed Documents" folder on the employee's profile.</p></div><div class="drawer-footer"><button class="btn btn-secondary btn-md" disabled>Cancel</button><button class="btn btn-primary btn-md">Send Request</button></div></div></div></div></div>
+  </div>
+</section>
+
+<section id="shr-components" class="section" data-title="SHR components">
+  <h2>SHR components</h2>
+  <div class="stack">
+    <div class="example"><h3>StatusPill</h3><div class="row"><span class="status-pill status-published"><span class="dot"></span>Published</span><span class="status-pill status-notified"><span class="dot"></span>Published with notification</span><span class="status-pill status-pending"><span class="dot"></span>Scheduled</span><span class="status-pill status-draft"><span class="dot"></span>Draft</span><span class="status-pill status-signature"><span class="dot"></span>Pending signature</span><span class="status-pill status-error"><span class="dot"></span>Failed</span></div></div>
+    <div class="grid-2"><div class="example"><h3>Activity timeline item</h3><div class="timeline"><div class="timeline-item"><strong>Signature request sent</strong><p class="caption">HR string sent W-4 packet to Amelia Vargas · 11:03 PM</p><span class="role-chip role-hr">HR</span></div><div class="timeline-item"><strong>Company profile edited</strong><p class="caption">Industry changed to Restaurant · 2 hours ago</p></div></div></div><div class="example"><h3>EIN field</h3><div class="stack"><div class="field"><label>EIN default</label><input class="input" placeholder="XX-XXXXXXX"></div><div class="field"><label>EIN filled</label><input class="input mono" value="12-3456789"></div><div class="field"><label>EIN error</label><input class="input mono error" value="123456789"><span class="helper error">Use the format XX-XXXXXXX.</span></div><div class="field"><label>EIN read-only</label><input class="input mono" value="12-3456789" disabled></div></div></div></div>
+    <div class="example"><h3>Notification / task card</h3><div class="card"><div class="row" style="justify-content:space-between"><span class="status-pill status-pending"><span class="dot"></span>Needs review</span><span class="caption">Today</span></div><h4>Approve timesheet corrections</h4><p class="caption">3 employees at StgSite1 have pending payroll inputs.</p><div class="row"><button class="btn btn-primary btn-sm">Review</button><button class="btn btn-secondary btn-sm">Dismiss</button></div></div></div>
+    <div class="example"><h3>Send signature request workspace</h3><div class="doc-workspace compact"><div class="doc-viewer"><div class="doc-toolbar"><div class="row"><button class="btn btn-secondary btn-sm">Fill <i class="ti ti-chevron-down"></i></button><i class="ti ti-download"></i><i class="ti ti-printer"></i></div><span>Page 1 of 1</span></div><div class="doc-page"><p><strong>File preview</strong></p><p>The request starts from the document viewer. Users review the file, place or confirm signature fields, then use the action panel to request signatures.</p><p>Required fields should be visible on the document canvas before the request is sent.</p><div class="signature-line"><span>Manager signature: <span class="sig-field">Signature field *</span></span><span>Date: <span class="sig-field">Date field *</span></span></div></div><div class="doc-footer"><button class="btn btn-secondary btn-md">Close</button></div></div><aside class="doc-actions" aria-label="Document actions"><button class="doc-action-primary">Request signature</button><div class="row" style="justify-content:center;padding:0 var(--space-5) var(--space-5)"><i class="ti ti-signature"></i><strong>Edit signature template</strong></div><div class="action-list"><div><i class="ti ti-download"></i>Download</div><div><i class="ti ti-printer"></i>Print</div><div><i class="ti ti-share-3"></i>Share</div><div><i class="ti ti-mail"></i>Email</div><div><i class="ti ti-pencil"></i>Rename</div><div><i class="ti ti-copy"></i>Duplicate</div><div><i class="ti ti-trash"></i>Delete</div></div><div class="file-meta"><div><i class="ti ti-folder"></i>Created: 00/00/0000</div><div><i class="ti ti-user"></i>Created by: Torres, Stephany</div><div><i class="ti ti-file"></i>Size: 433KB</div></div></aside></div><p class="caption">This is not a blocking modal. It is a document workspace with a persistent action panel, matching the SHR eSign flow.</p></div>
+    <div class="example"><h3>Audience Selector — company to sites to departments</h3><div class="audience-tree"><div class="tree-column"><h4>Company</h4><div class="tree-item active">0 Manual STG Company <i class="ti ti-chevron-right"></i></div><div class="tree-item">Andy's Super Burgers <i class="ti ti-chevron-right"></i></div><div class="tree-item">BW-Retail <i class="ti ti-chevron-right"></i></div></div><div class="tree-column"><h4>Sites</h4><div class="tree-item active">StgSite1 <span>7 depts</span></div><div class="tree-item">StgSite2 <span>3 depts</span></div><div class="tree-item disabled">Site5 <span>0 depts</span></div></div><div class="tree-column"><h4>Departments</h4><label class="tree-item"><span>Kitchen</span><input type="checkbox" checked></label><label class="tree-item"><span>Payroll</span><input type="checkbox"></label><label class="tree-item"><span>Safety</span><input type="checkbox" checked></label></div></div></div>
+  </div>
+</section>
+
+<section id="role-layouts" class="section" data-title="Role-based layouts">
+  <h2>Role-based layouts</h2>
+  <div class="stack">
+    <div class="example">
+      <h3>HR Admin / HR Partner view</h3>
+      <div class="app-preview">
+        <div class="app-topbar">
+          <strong class="app-brand">Simplify HR</strong>
+          <div class="app-nav" aria-label="Internal navigation">
+            <span class="active"><i class="ti ti-layout-grid"></i>Home</span><span><i class="ti ti-building"></i>Companies</span><span><i class="ti ti-building-community"></i>EORS</span><span><i class="ti ti-id"></i>People</span><span><i class="ti ti-users"></i>Users</span><span><i class="ti ti-dots"></i>More</span>
+          </div>
+          <div class="app-actions"><span class="notif"><i class="ti ti-bell"></i><b>4</b></span><span class="avatar">Hs</span></div>
+        </div>
+        <div class="app-body">
+          <div class="screen-title">
+            <div class="row"><h3>Companies</h3><button class="btn btn-link btn-md"><i class="ti ti-circle-plus-filled"></i>Add new company</button></div>
+            <div class="field search-field"><input class="input" placeholder="Search companies..."></div>
+          </div>
+          <div class="company-grid">
+            <div class="company-card"><span class="avatar">0</span><strong>0 Manual STG Company</strong><span>Main contact: Manual STG</span><span>Sites: 7</span></div>
+            <div class="company-card"><span class="avatar">3</span><strong>3. test company</strong><span>Main contact: test Company</span><span>Sites: 1</span></div>
+            <div class="company-card"><span class="avatar">A</span><strong>Andy's Super Burgers</strong><span>Main contact: Juana Rojas</span><span>Sites: 8</span></div>
+            <div class="company-card"><span class="avatar">B</span><strong>BW-Retail</strong><span>Main contact: BW Safety</span><span>Sites: 3</span></div>
+          </div>
+        </div>
+      </div>
+      <ul><li>Internal users need broad search, creation, and cross-company navigation.</li><li>Use accent only for active navigation and primary action moments.</li><li>Cards stay neutral so company data remains the focus.</li></ul>
+    </div>
+    <div class="example">
+      <h3>Client role view</h3>
+      <div class="app-preview">
+        <div class="app-topbar">
+          <strong class="app-brand">SimplifyHR</strong>
+          <div class="app-nav" aria-label="Client navigation">
+            <span class="active"><i class="ti ti-layout-grid"></i>Home</span><span><i class="ti ti-users"></i>People</span><span><i class="ti ti-calendar"></i>Timesheet</span><span><i class="ti ti-building"></i>Manage Profile</span><span><i class="ti ti-file-invoice"></i>Invoices</span><span><i class="ti ti-folder"></i>Documents</span><span><i class="ti ti-list-check"></i>Tasks</span>
+          </div>
+          <div class="app-actions"><span class="notif"><i class="ti ti-bell"></i><b>20</b></span><span class="avatar">AC</span></div>
+        </div>
+        <div class="client-hero">
+          <div><h3>Welcome back, Acme Corp</h3><p>Quick actions</p><button class="btn btn-sm"><i class="ti ti-file-invoice"></i>1 invoice to approve</button></div>
+          <span><i class="ti ti-calendar"></i>24 Jan 2023</span>
+        </div>
+        <div class="client-dashboard">
+          <div class="card scroll-panel">
+            <div class="row" style="justify-content:space-between"><h3>Announcements</h3></div>
+            <div class="field"><input class="input" placeholder="Search"></div>
+            <div class="announcement-item"><h4>New requirements for the workplace</h4><p class="caption">Read-only announcement content with author and time metadata.</p><div class="row"><span class="avatar">KD</span><strong>Kristina Diaz</strong><span class="caption">16 hours ago</span></div></div>
+            <div class="announcement-item"><h4>Policy acknowledgement update</h4><p class="caption">Client users can discover what changed without seeing internal controls.</p><div class="row"><span class="avatar">HR</span><strong>HR Admin</strong><span class="caption">2 days ago</span></div></div>
+          </div>
+          <div class="client-main">
+            <div class="card">
+              <div class="row" style="justify-content:space-between"><h3>Company overview</h3><button class="btn btn-link btn-sm">View people <i class="ti ti-arrow-right"></i></button></div>
+              <div class="metric-row"><div><h3>42</h3><span class="caption">Active employees</span></div><div><h3>4</h3><span class="caption">Sites</span></div><div><h3>3</h3><span class="caption">Departments</span></div></div>
+            </div>
+            <div class="card">
+              <h3>Pending approvals</h3>
+              <div class="approval-row"><span class="avatar">AP</span><div><strong>Invoice INV-2387 · $5,200</strong><p class="caption"><span class="badge role-client">Monthly</span> Period Mar 2-8</p></div><div class="approval-actions"><button class="btn btn-secondary btn-sm">Review</button><button class="btn btn-secondary btn-sm"><i class="ti ti-file-download"></i>Download PDF</button></div></div>
+              <div class="approval-row"><span class="avatar">AP</span><div><strong>Invoice INV-2388 · $3,850</strong><p class="caption"><span class="badge role-site">Weekly</span> Period Mar 9-15</p></div><div class="approval-actions"><button class="btn btn-secondary btn-sm">Review</button><button class="btn btn-secondary btn-sm"><i class="ti ti-file-download"></i>Download PDF</button></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul><li>Client navigation is task-based and excludes internal administration.</li><li>Approvals and documents are visible; platform settings stay hidden.</li><li>The layout collapses to a single column on tablet and mobile.</li></ul>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:var(--space-5)"><div class="example"><h3>Company grid</h3><div class="company-grid"><div class="company-card"><span class="avatar">0</span><strong>0 Manual STG Company</strong><span>Main contact: Manual STG</span><span>Sites: 7</span></div><div class="company-card"><span class="avatar">A</span><strong>Andy's Super Burgers</strong><span>Main contact: Juana Rojas</span><span>Sites: 8</span></div></div></div><div class="example"><h3>Company hierarchy</h3><div class="hierarchy"><div class="node root selected"><span class="node-label">Company</span><span class="node-title">0 Manual STG Company</span><span class="node-meta">7 sites · 52 employees</span></div><div class="node" style="margin-left:var(--space-5)"><span class="node-label">Region</span><span class="node-title">East</span><span class="node-meta">5 sites</span></div><div class="node" style="margin-left:var(--space-8)"><span class="node-label">Site</span><span class="node-title">StgSite1</span><span class="node-meta">Departments (7)</span></div><div class="node" style="margin-left:var(--space-8)"><span class="node-label">Site</span><span class="node-title">StgSite2</span><span class="node-meta">Departments (3)</span></div></div></div></div>
+</section>
+
+<section id="selection-trees" class="section" data-title="Selection decision trees">
+  <h2>Selection decision trees</h2>
+  <div class="table-wrap"><table><thead><tr><th>Need</th><th>Use</th><th>Rule</th></tr></thead><tbody><tr><td>Small finite list</td><td>Select</td><td>Use when options are obvious and under 10.</td></tr><tr><td>Long searchable list</td><td>Combobox</td><td>Use for companies, users, templates, and sites when typing accelerates choice.</td></tr><tr><td>Many selected recipients</td><td>MultiSelectList</td><td>Use with search, all-toggle, scroll area, and selected count.</td></tr><tr><td>Hierarchical targeting</td><td>Audience Selector</td><td>Use Company → Sites → Departments drill-down with role-aware disabled states.</td></tr><tr><td>Permission-scoped actions</td><td>Role layout rules</td><td>Hide actions when unavailable; disable with explanation only when discovery matters.</td></tr></tbody></table></div>
+</section>
+
+<section id="esign-patterns" class="section" data-title="eSign patterns">
+  <h2>eSign patterns</h2>
+  <div class="rules"><div class="rule"><strong>Internal users send</strong><p>HR Admin, HR Rep, Safety Coordinator, and HR Proxy can upload, configure templates, send signature requests, reminders, and view dashboards.</p></div><div class="rule"><strong>Client-side users sign</strong><p>Clients, site managers, department managers, and employees can view pending documents, sign documents, and download signed copies.</p></div><div class="rule"><strong>Status is explicit</strong><p>Pending signature, sent reminder, completed, expired, and failed should render as StatusPill states with dot and label.</p></div></div>
+  <div class="stack">
+    <div class="example">
+      <h3>Document action workspace</h3>
+      <div class="doc-workspace">
+        <div class="doc-viewer">
+          <div class="doc-toolbar"><div class="row"><button class="btn btn-secondary btn-sm">Fill <i class="ti ti-chevron-down"></i></button><i class="ti ti-download"></i><i class="ti ti-printer"></i></div><span>Page 1 of 1</span></div>
+          <div class="doc-page">
+            <p><strong>Agreement preview</strong></p>
+            <p>This document preview represents an eSign packet. The reader area should stay mostly neutral, while signature-required fields receive clear, high-contrast highlights.</p>
+            <p>Long documents need independent scrolling, persistent actions, and enough white space around the page so users understand they are reviewing a file, not a form.</p>
+            <p>When the document is ready to send, the right action panel owns file actions. When the user is signing, the footer owns completion actions.</p>
+            <div class="signature-line"><span>Employee signature: JB</span><span>Date: 04/02/2025</span></div>
+            <div class="signature-line"><span>Manager signature: <span class="sig-field">Signature field *</span></span><span>Date: <span class="sig-field">Date field *</span></span></div>
+          </div>
+          <div class="doc-footer"><button class="btn btn-primary btn-md">Confirm signature</button><button class="btn btn-secondary btn-md">Save & finish later</button></div>
+        </div>
+        <aside class="doc-actions" aria-label="Document actions">
+          <button class="doc-action-primary">Request signature</button>
+          <div class="row" style="justify-content:center;padding:0 var(--space-5) var(--space-5)"><i class="ti ti-signature"></i><strong>Edit signature template</strong></div>
+          <div class="action-list"><div><i class="ti ti-download"></i>Download</div><div><i class="ti ti-printer"></i>Print</div><div><i class="ti ti-share-3"></i>Share</div><div><i class="ti ti-mail"></i>Email</div><div><i class="ti ti-pencil"></i>Rename</div><div><i class="ti ti-copy"></i>Duplicate</div><div><i class="ti ti-trash"></i>Delete</div></div>
+          <div class="file-meta"><div><i class="ti ti-folder"></i>Created: 00/00/0000</div><div><i class="ti ti-user"></i>Created by: Torres, Stephany</div><div><i class="ti ti-file"></i>Size: 433KB</div></div>
+        </aside>
+      </div>
+    </div>
+    <div class="example">
+      <h3>Client signing tasks</h3>
+      <div class="stack">
+        <div class="task-card"><div><div class="row"><span class="badge role-client">eSign</span><span class="badge status-error">Urgent</span></div><h3>Amendment #2 - Rate Schedule</h3><p class="caption">Sent by HR Admin · 0.8 MB · PDF · 1 of 2 signers signed</p><div class="row"><span class="caption"><i class="ti ti-calendar"></i> Sent Mar 22, 2026</span><span class="caption"><i class="ti ti-clock"></i> Due Mar 25, 2026</span></div></div><div class="task-actions"><button class="btn btn-primary btn-md">Review &amp; sign</button><button class="btn btn-secondary btn-md"><i class="ti ti-arrow-down"></i>PDF</button></div></div>
+        <div class="task-card"><div><div class="row"><span class="badge role-client">eSign</span><span class="status-pill status-signature"><span class="dot"></span>Pending signature</span></div><h3>Policy acknowledgement</h3><p class="caption">Sent by HR Admin · PDF · waiting on client signature</p><div class="row"><span class="caption"><i class="ti ti-calendar"></i> Sent Mar 18, 2026</span><span class="caption"><i class="ti ti-clock"></i> Due Mar 28, 2026</span></div></div><div class="task-actions"><button class="btn btn-primary btn-md">Review &amp; sign</button><button class="btn btn-secondary btn-md"><i class="ti ti-arrow-down"></i>PDF</button></div></div>
+      </div>
+    </div>
+    <div class="grid-3"><div class="card"><span class="status-pill status-signature"><span class="dot"></span>Pending signature</span><h3 style="margin-top:var(--space-3)">New hire packet</h3><p class="caption">Due Jun 7, 2026 · Amelia Vargas</p></div><div class="card"><span class="status-pill status-notified"><span class="dot"></span>Reminder sent</span><h3 style="margin-top:var(--space-3)">Policy acknowledgement</h3><p class="caption">Sent by HR string · 2 days ago</p></div><div class="card"><span class="status-pill status-published"><span class="dot"></span>Signed</span><h3 style="margin-top:var(--space-3)">W-4 form</h3><p class="caption">Completed May 29, 2026</p></div></div>
+  </div>
+</section>
+
+<section id="applied-recipes" class="section" data-title="Applied recipes">
+  <h2>Applied recipes</h2>
+  <div class="grid-3"><div class="recipe-card"><h3>Announcements table</h3><ul><li>Search by title or author</li><li>Audience chips in People column</li><li>StatusPill for publish state</li><li>Time and date in sortable column</li></ul></div><div class="recipe-card"><h3>Company profile</h3><ul><li>Hierarchy sidebar</li><li>Profile tabs</li><li>Read-only company fields by permission</li><li>EIN field with format validation</li></ul></div><div class="recipe-card"><h3>Client approvals</h3><ul><li>Client sees approvals, invoices, contracts</li><li>People and company data are mostly read-only</li><li>Internal settings are hidden</li><li>No-permission sections are not rendered</li></ul></div></div>
+</section>
+
+<section id="governance" class="section" data-title="Governance">
+  <h2>Governance</h2>
+  <div class="rules"><div class="rule"><strong>Code owns implementation</strong><p>The production SHR codebase owns component behavior and API details.</p></div><div class="rule"><strong>Living docs own product decisions</strong><p>This page owns usage, role logic, component choice, and design rationale.</p></div><div class="rule"><strong>Promote repeated patterns</strong><p>If a local SHR pattern appears three times, evaluate it as a DS candidate.</p></div><div class="rule"><strong>Version and compare</strong><p>When tokens or permissions change, update this DS and compare against the code source.</p></div></div>
+</section>
+
+<section id="footer" class="section" data-title="Footer">
+  <h2>Footer</h2>
+  <p>Version: <span class="mono">v1.0</span></p>
+  <p>Last updated: May 31, 2026</p>
+  <p>Built from: SHR role docs, permission matrix, screenshots, and shared Staffology foundation primitives.</p>
+</section>
+
+</main>
+</div>
+<div class="copy-toast" role="status" aria-live="polite">Copied!</div>
+<script>
+const links = [...document.querySelectorAll('.nav-list a')];
+const sections = [...document.querySelectorAll('main section')];
+const search = document.querySelector('.nav-search');
+const toast = document.querySelector('.copy-toast');
+function setActiveLink(id) {
+  links.forEach((link) => {
+    const active = link.getAttribute('href') === '#' + id;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  });
+}
+function updateActiveSection() {
+  const pageBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+  if (pageBottom) return setActiveLink('footer');
+  const probe = window.scrollY + Math.min(window.innerHeight * 0.38, 320);
+  let current = sections[0]?.id;
+  sections.forEach((section) => { if (section.offsetTop <= probe) current = section.id; });
+  if (current) setActiveLink(current);
+}
+search?.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  links.forEach((link) => {
+    const id = link.getAttribute('href').slice(1);
+    const section = document.getElementById(id);
+    const text = `${link.textContent} ${section?.dataset.title || ''} ${section?.textContent || ''}`.toLowerCase();
+    link.parentElement.hidden = q.length > 0 && !text.includes(q);
+  });
+});
+document.querySelector('.mobile-nav')?.addEventListener('change', (event) => {
+  document.querySelector(event.target.value)?.scrollIntoView();
+});
+links.forEach((link) => link.addEventListener('click', () => setActiveLink(link.getAttribute('href').slice(1))));
+window.addEventListener('scroll', updateActiveSection, { passive: true });
+window.addEventListener('resize', updateActiveSection);
+updateActiveSection();
+document.querySelectorAll('.swatch').forEach((swatch) => {
+  swatch.addEventListener('click', async () => {
+    const value = swatch.dataset.copy;
+    try { await navigator.clipboard.writeText(value); } catch (error) {}
+    toast.classList.add('show');
+    window.setTimeout(() => toast.classList.remove('show'), 1200);
+  });
+});
+</script>
+</body>
+</html>
